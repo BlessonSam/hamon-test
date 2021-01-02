@@ -65,9 +65,15 @@ export default {
         'subject=' + this.$refs.subjectadd.value.id
       )
         .then((response) => {
-          console.log(response)
+          this.classDetails = response.data
           this.loading1 = false
           this.addsubject = null
+          this.$q.notify({
+            color: 'green-5',
+            textColor: 'white',
+            icon: 'done',
+            message: 'Subject' + this.$refs.subjectadd.value.id + ' is assigned for this classroom'
+          })
         })
         .catch((error) => {
           console.error(error)

@@ -1,6 +1,7 @@
 <template>
   <q-page>
      <q-card  class="q-mx-auto q-mt-xl" style="max-width:600px; border-radius:20px">
+       <div class="full-width justify-center row"><h5 class="text-bold">Classroom List</h5></div>
        <q-spinner v-if="loading" class="absolute-center" color="green" size="3em" />
     <q-markup-table v-else>
       <thead>
