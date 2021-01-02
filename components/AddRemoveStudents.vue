@@ -69,8 +69,20 @@ export default {
       })
         .then((response) => {
           console.log(response)
+          this.$axios.get('https://hamon-interviewapi.herokuapp.com/registration?api_key=AdB12').then((response) => {
+            this.regs = response.data.registrations
+          })
+            .catch((error) => {
+              console.error(error)
+            })
           this.loading3 = false
           this.addstudent = null
+          this.$q.notify({
+            color: 'green-5',
+            textColor: 'white',
+            icon: 'done',
+            message: 'Student with ID:' + this.$refs.studentadd.value.id + ' has been added to this classroom'
+          })
         })
         .catch((error) => {
           console.error(error)
@@ -85,8 +97,20 @@ export default {
       this.$axios.delete('https://hamon-interviewapi.herokuapp.com/registration/' + this.$refs.studentremove.value.id + '?api_key=AdB12')
         .then((response) => {
           console.log(response)
+          this.$axios.get('https://hamon-interviewapi.herokuapp.com/registration?api_key=AdB12').then((response) => {
+            this.regs = response.data.registrations
+          })
+            .catch((error) => {
+              console.error(error)
+            })
           this.loading4 = false
           this.removestudent = null
+          this.$q.notify({
+            color: 'red-5',
+            textColor: 'white',
+            icon: 'delete',
+            message: 'Student with ID:' + this.$refs.studentremove.value.student + ' has been removed from this classroom'
+          })
         })
         .catch((error) => {
           console.error(error)
